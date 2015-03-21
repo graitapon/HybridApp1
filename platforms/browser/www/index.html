@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+
+    <link rel="stylesheet" href="js/jquery.mobile-1.4.5.min.css"/>
+        
+    <link href="js/photoswipe/photoswipe.css" rel="stylesheet" />
+    <link href="js/photoswipe/default-skin.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+    
+    
+    <script src="js/camera.js"></script>    
+    <script src="js/camera2.js"></script>
+    
+    
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+
+
+    <script src="js/shake.js"></script>    
+
+    <script src="js/photoswipe/photoswipe.min.js"></script>
+    <script src="js/photoswipe/photoswipe-ui-default.min.js"></script>
+    
+    <script src="js/gallery.js"></script>
+    
+    
+    
+    <title>Hybrid Apps v1</title>
+
+</head>
+<body>
+
+<div data-role="page" id="home">
+    <div data-role="header" data-position="fixed">
+        <h1>Hybrid App v1</h1>    
+            <div data-role="navbar" data-iconpos="top">
+                <ul>
+                    <li><a href="#home" data-icon="home" class="ui-btn-active ui-state-persist">Home</a></li>
+                    <li><a href="#cam" data-icon="camera">ถ่ายรูป</a></li>
+                    <li><a href="#location" data-icon="location">แสดงตำแหน่ง</a></li>
+                    <li><a href="#team" data-icon="gear">ทีมพัฒนา</a></li>
+                </ul>
+            </div>
+    
+    </div>
+    
+    <ul id="my-listview" data-role="listview" data-filter="true" data-filter-placeholder="Search fruits..." data-inset="true">
+        <li data-role="list-divider">รวมภาพการ์ตูน</li>
+        <li><a href="#" id="cartoon1" class="cartoon"><img src="img/naruto/naruto-000.jpg"><h1>การ์ตูน 1: นารูโตะ</h1></a></li>
+        <li><a href="#" id="cartoon2" class="cartoon"><img src="img/bleach/bleach-000.jpg"><h1>การ์ตูน 2: บลีช</h1></a></li>
+        <li><a href="#" id="cartoon3" class="cartoon"><img src="img/one-piece/one-piece-000.jpg"><h1>การ์ตูน 3: วันพีช</h1></a></li>
+        <li><a href="#" id="cartoon4" class="cartoon"><img src="img/dragonball/dragon-ball-000.jpg"><h1>การ์ตูน 4: ดราก้อนบอล</h1></a></li>
+        <li data-role="list-divider">ภาพถ่าย</li>
+        <li><a href="#" id="custom1" class="cartoon">Custom 1</a></li>
+        <li><a href="#" id="custom2" class="cartoon">Custom 2</a></li>
+    </ul>        
+    
+    
+</div>    
+
+<div data-role="page" id="cam">
+    <div data-role="header" data-position="fixed">
+        <h1>Hybrid App v1</h1>    
+            <div data-role="navbar" data-iconpos="top">
+                <ul>
+                    <li><a href="#home" data-icon="home">Home</a></li>
+                    <li><a href="#cam" data-icon="camera" class="ui-btn-active ui-state-persist">ถ่ายรูป</a></li>
+                    <li><a href="#location" data-icon="location">แสดงตำแหน่ง</a></li>
+                    <li><a href="#team" data-icon="gear">ทีมพัฒนา</a></li>
+                </ul>
+            </div>
+    
+    </div>
+
+    <form>
+        <fieldset data-role="controlgroup" data-type="horizontal">
+            <legend>ช่องเก็บภาพถ่าย:</legend>
+            <input type="radio" name="radio-h" id="radio-a" value="on" checked="checked">
+            <label for="radio-a">Custom 1</label>
+            <input type="radio" name="radio-h" id="radio-b" value="off">
+            <label for="radio-b">Custom 2</label>
+        </fieldset>
+    </form>
+
+    <div id="camera1"></div>
+    <!-- <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Gallery!!</button>-->
+    <div class="ui-grid-a camera2">
+        <div class="ui-block-a" align="center">
+            <video id="video" width="640" height="480" autoplay></video>    
+        </div>
+        <div class="ui-block-b" align="center">
+            <h3>Snap Shot</h3>
+            <canvas id="canvas" width="600" height="400"></canvas>
+            
+        </div>
+    </div>
+              
+
+
+    <div data-role="footer" data-position="fixed" align="center">
+        <a href="#" data-icon="camera" id="snap">Take Photo</a>
+    </div>                
+
+</div>
+
+    
+<div data-role="page" id="location">
+    <div data-role="header" data-position="fixed">
+        <h1>Hybrid App v1</h1>    
+            <div data-role="navbar" data-iconpos="top">
+                <ul>
+                    <li><a href="#home" data-icon="home">Home</a></li>
+                    <li><a href="#cam" data-icon="camera">ถ่ายรูป</a></li>
+                    <li><a href="#location" data-icon="location"  class="ui-btn-active ui-state-persist">แสดงตำแหน่ง</a></li>
+                    <li><a href="#team" data-icon="gear">ทีมพัฒนา</a></li>
+                </ul>
+            </div>
+    
+    </div>
+
+    
+    <div id="map-canvas">
+    </div>    
+</div>        
+
+    
+<div data-role="page" id="team">
+    <div data-role="header" data-position="fixed">
+        <h1>Hybrid App v1</h1>    
+            <div data-role="navbar" data-iconpos="top">
+                <ul>
+                    <li><a href="#home" data-icon="home">Home</a></li>
+                    <li><a href="#cam" data-icon="camera">ถ่ายรูป</a></li>
+                    <li><a href="#location" data-icon="location">แสดงตำแหน่ง</a></li>
+                    <li><a href="#team" data-icon="gear" class="ui-btn-active ui-state-persist">ทีมพัฒนา</a></li>
+                </ul>
+            </div>
+    
+    </div>
+
+    <ul data-role="listview" data-inset="true">
+        <li><a href="#"><img src="img/5710121027.jpg"><h2>ไกรทพนธ์ เติมวิทย์ขจร</h2>
+            <p>5710121027 PSU MIT13<br>Tel: 092-8276175<br>email: graitapon.t@yru.ac.th</p></a>
+        </li>
+        <li><a href="#"><img src="img/5710121090.jpg"><h2>อมรเทพ มณีเนียม</h2>
+            <p>5710121090 PSU MIT13 <br>Tel: 087-3937891<br>email: ppom@gmail.com</p></a>
+        </li>
+        <li id="vibrate"><a href="#"><img src="img/vibrator.png"><h1>ทดสอบการสั่น & เสียง</h1>
+            <h2>Vibration & Sound</h2></a>
+        </li>
+
+    </ul>
+    
+    <ul id="filelist" data-role="listview" ></ul>
+    
+     <ul id="dirList" data-role="listview" data-inset="true">
+     </ul>
+    
+
+    
+</div>        
+
+
+
+
+<div class="pswp" tabindex="-1" aria-hidden="true">
+    <div class="pswp__bg"></div>
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+            <div class="pswp__caption"><div class="pswp__caption__center"></div></div>
+          </div>
+    </div>
+</div>
+
+
+    
+
+    
+    
+
+    
+<script>
+var fileObject, gallery, swipe = false;
+$(document).ready(function() {
+    
+    document.addEventListener("deviceready", function() {
+        
+        
+        document.addEventListener('backbutton', function(e) {
+        
+            if(swipe) {
+                swipe = false;
+                gallery.close(); 
+            }
+            else navigator.app.exitApp();
+            //    navigator.app.backHistory();
+                
+        }, false);
+        
+
+        shake.startWatch(onShake);
+
+        //alert(cordova.file.externalRootDirectory);
+
+        
+        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,  onFileSystemSuccess, onFileError);
+        
+        //window.requestFileSystem(window.TEMPORARY, 1024*1024, onInitFs, onFileError);
+        //alert(LocalFileSystem.PERSISTENT);
+        window.requestFileSystem(LocalFileSystem.PERSISTENT, 1024*1024,  onInitFs, onFileError);
+ 
+    }, false);
+
+    
+  
+    $('#radio-a').click(function() {
+        custom = 'custom1'
+    });
+    $('#radio-b').click(function() {
+        custom = 'custom2'
+    });
+
+    $(".cartoon").click(function () {
+        $.mobile.pageContainer.pagecontainer("change", "#view1");
+        openPhotoSwipe(window[$(this).attr('id')]);
+    });
+
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        $('.camera2').html('');
+        $("#btnYes").on("click", function () {
+            playAudio('/android_asset/www/media/sound1.mp3');
+        });
+
+        
+        $('#snap').click(function() {
+            //capturePhoto();
+            getPhoto();
+        });
+       $('#vibrate').click(function() {
+            navigator.vibrate(1000);
+            playAudio('/android_asset/www/media/sound1.mp3');
+        });
+
+    }
+    else {
+        $('#camera1').remove();    
+ 
+       $('#vibrate').click(function() {
+            audioElement.play();
+        });
+        
+
+        $('#snap').click(function() {
+            getPic();
+        });
+
+    }
+
+
+
+
+});
+    
+    
+function onShake() {
+    alert('Shaked !');
+}
+    
+    
+function onFileSystemSuccess(fs) {
+    //Create Files
+    alert('ccc ' +fs.root.fullPath);
+    var path = '/mnt/sdcard/DCIM';
+    fs.root.fullPath = path;
+    //alert(fs.root.fullPath);
+    fs.root.getDirectory(path, { create: true, exclusive: false }, null, onFileError);
+    //fs.root.getFile(path, { create: true, exclusive: false }, null, onFileError);
+    var dirReader = fs.root.createReader();
+    // Get a list of all the entries in the directory
+    dirReader.readEntries(f_success, onFileError);
+}
+ 
+//Create List
+function f_success(entries) {
+
+    var i;
+    var objectType;
+ 
+    for (i=0; i < entries.length; i++) {
+        if(entries[i].isDirectory == true) {
+            objectType = 'Directory';
+        } else {
+            objectType = 'File';
+        }
+        $('#dirList').append('<li><h3>' + entries[i].name + '</h3><p>' + entries[i].toURI() + '</p>'
+             +'<p class="ui-li-aside">Type:<strong>' + objectType + '</strong></p></li>');
+    }
+    $('#dirList').listview("refresh");
+}
+ 
+  
+//Error
+function onFileError(error) {
+    alert("Failed to list directory contents: " + error.code);
+}
+    
+    
+function toArray(list) {
+  return Array.prototype.slice.call(list || [], 0);
+}
+
+function listResults(entries) {
+  // Document fragments can improve performance since they're only appended
+  // to the DOM once. Only one browser reflow occurs.
+  var fragment = document.createDocumentFragment();
+
+  entries.forEach(function(entry, i) {
+    var img = entry.isDirectory ? '<img src="folder-icon.gif">' :
+                                  '<img src="file-icon.gif">';
+    var li = document.createElement('li');
+    li.innerHTML = [img, '<span>', entry.name, '</span>'].join('');
+    fragment.appendChild(li);
+  });
+
+  document.querySelector('#filelist').appendChild(fragment);
+}
+
+function onInitFs(fs) {
+    alert(fs.root.fullPath)
+//alert(fs);
+    
+    var path = '/mnt/sdcard/Pictures/Screenshots/';
+    window.FS_ROOT = path;//fileSystem.root.fullPath;
+    //fs.root.getDirectory(path, { create: false, exclusive: false }, null, onFileError);
+    //fs.root.getFile(path, { create: false, exclusive: false }, null, onFileError);
+  var dirReader = fs.root.createReader();
+  var entries = [];
+
+  // Call the reader.readEntries() until no more results are returned.
+  var readEntries = function() {
+     dirReader.readEntries (function(results) {
+      if (!results.length) {
+        listResults(entries.sort());
+      } else {
+        entries = entries.concat(toArray(results));
+        readEntries();
+      }
+    }, onFileError);
+  };
+
+  readEntries(); // Start reading dirs.
+
+}
+
+//window.requestFileSystem(window.TEMPORARY, 1024*1024, onInitFs, errorHandler);    
+    
+</script>    
+
+<script src="js/audio.js"></script>
+<script src="js/map.js"></script>
+ 
+<script src="cordova.js"></script>
+        
+    
+</body>
+</html>

@@ -1,0 +1,63 @@
+
+#my-listview li a {
+    height : 50px;
+    /*font-size: 30px;*/
+}
+
+
+
+#video, #canvas {
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+}
+
+
+
+
+#map-canvas { 
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left:0;
+    right:0;
+
+}
+
+.capture {
+    width: 100%;
+    height: auto;
+}
+
+#camera1 img {
+    -moz-transform:rotate(90deg);
+    -webkit-transform:rotate(90deg);
+    -o-transform:rotate(90deg);
+    -ms-transform:rotate(90deg);
+
+}
+
+#menu, #get_file_details{
+	display: none;
+}
+
+.folder, .file{
+    font-family:sans;
+    font-size:10px;
+    cursor:pointer;
+}
+
+.folder{
+	background: url('../img/folder.png') no-repeat 50% 0%;
+	margin:2px;
+	padding-top:25px;
+	text-align:center;
+}
+
+
+.file{
+	background: url('../img/file.png') no-repeat 50% 0%;
+	margin:2px;
+	padding-top:25px;
+	text-align:center;
+}
